@@ -1,0 +1,36 @@
+void AnalizIm()     //анализ изображения и деление на квадраты
+        {
+            try
+            {
+                int Wkv = wIm/ Kol_W;   //вычисляем ширину части изображения
+                int Hkv = hIm / Kol_H;    //вычисляем высоту части изображения
+                int Wkv1 = WP / Kol_W;  //вычисляем ширину части PictureBox
+                int Hkv1 = HP / Kol_H;  //вычисляем высоту части PictureBox
+                Puzz = new PictureBox[Kol_W, Kol_H];    //указываем размеры массива PictureBox
+                Im = new Bitmap[Kol_W, Kol_H];  //указываем размеры массива изображений
+
+                for (int i = 0; i < Kol_W; i++) //инициализируем массив для последовательного заполнения массива частями изображения по строке
+                {
+                    for (int j = 0; j < Kol_H; j++) //инициализируем массив для последовательного заполнения массива частями изображения по столбцу
+                    {
+                        if (Puzz[i, j] == null) //если указанный элемент пуст, тогда
+                        {
+                            Bitmap buf = null;  //буффераня перемменная, серез которую переносим нужное значение в массив
+                            Rectangle rect = new Rectangle(Wkv * i, Hkv *j, Wkv, Hkv);  //переменная, в которой указываются координаты изображения  размер нужной части изображения для деления на части
+                            Im[i, j] = AnIm.Clone(rect, AnIm.PixelFormat);  //клонируем эту часть в массив на нужное нам место
+                            buf = Im[i, j]; //копируем этот же элемент в буффер
+                            Puzz[i, j] = new PictureBox();  //создаем новый элемент PictureBox
+                            Puzz[i, j].Image = buf;//копируем из буффера в массив часть изображения
+                            Puzz[i, j].Size = new System.Drawing.Size(Wkv1, Hkv1);   //задаем размер каждого PictureBox для правильного отображения на форме
+                            Puzz[i, j].SizeMode = PictureBoxSizeMode.StretchImage;  //задаем свойство PictureBox StretchImage, чтобы часть изображения не выходила за пределы PictureBox
+                            Puzz[i, j].BorderStyle = BorderStyle.Fixed3D;   //выделяем каждый из элементов PictureBox
+                        }
+                        Puzz[i, j].Location = new Point(Wkv1 * (i % Kol_W), Hkv1 * (j % Kol_H)); //прорисовываем каждый элемент в форме 
+                        if (!pictureBox1.Controls.Contains(Puzz[i, j])) //если часть изображения отсутствует
+                            pictureBox1.Controls.Add(Puzz[i, j]);   //добавить ее в PictureBox
+                    }
+                }
+                Raskl(Wkv1, Hkv1);  //вызов метода рандомного перемешивания
+            }
+            catch { }
+        }
