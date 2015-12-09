@@ -1,0 +1,30 @@
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)    //метод по нажатию мыши на часть изображения
+        {
+            if (F == null)  // если первый клик, значение будет пустым, тогда
+            {
+                F = (PictureBox)sender; //захватить первый объект, по которому кликнули
+            }
+            else   //если второй клик, тогда
+            {
+                S = (PictureBox)sender; //захватить второй объект, по которому кликнули
+                if (F != null && S != null) //если оба объекта захвачены
+                    Moved(F, S); //вызвать метод перемещения частей и передать ему оба значения
+                F = null;   //обнулить первую переменную переменную, для дальнейшей работы программы  
+                S = null;
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pictureBox2.Hide(); //скрываем буферный pictureBox
+            pictureBox3.Hide(); //скрываем буферный pictureBox
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form2 F = new Form2();
+            F.Show();
+        }
+    }
+}
