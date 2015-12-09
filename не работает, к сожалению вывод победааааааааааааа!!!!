@@ -1,0 +1,58 @@
+   //B = F;  //первую часть сохраняем в буферную переменную
+            //F = S;  //первой части присваиваем значение второй части
+            //S = B;  //второй части присваиваем значение первой части
+            pictureBox2.Image = F.Image;    //сохраняем значение в скрытый  pictureBox; при прямом сохранении: ссылка не указыввает на объект
+            pictureBox3.Image = S.Image;
+            rand[X1, Y1].Image = pictureBox3.Image;  //пересохраняем измененные первую и вторую части в массив
+            rand[X2, Y2].Image = pictureBox2.Image;
+            //Pvo[X1, Y1] = F;
+            //Pvo[X2, Y2] = S;
+            //if (Pvo[X1, Y1] != null)
+            //{
+            //    Pvo[X1, Y1].Invalidate();
+            //    Pvo[X1, Y1].Image = F.Image;
+
+            //}
+            //if (Pvo[X2, Y2] != null)
+            //{
+            //    Pvo[X2, Y2].Invalidate();
+            //    Pvo[X2, Y2].Image = S.Image;
+
+            //}
+            ////if (pictureBox2.Image == Puzz[X1, Y1].Image)
+            ////    Pvo[X1, Y1] = Puzz[X1, Y1];
+            ////if (pictureBox2.Image == Puzz[X2, Y2].Image)
+            ////    Pvo[X2, Y2] = Puzz[X2, Y2];
+            ////if (pictureBox3.Image == Puzz[X2, Y2].Image) 
+            ////    Pvo[X2, Y2] = Puzz[X2, Y2];
+            ////if (pictureBox3.Image == Puzz[X1, Y1].Image)
+            ////    Pvo[X1, Y1] = Puzz[X1, Y1];
+            ////bool prov = true;  // проверочная переменная  
+            ////for (int i = 0; i < Kol_W; i++)
+            ////{
+            ////    for (int j = 0; j < Kol_H; j++)
+            ////    {
+            ////        if (Pvo[i, j] == null)
+            ////            prov = false;
+
+            ////    }
+            ////}
+            ////if (prov == true)
+            ////{
+            ////    for (int i = 0; i < Kol_W; i++) //инициализируем массив для выяснения разположения каждой части по строке
+            ////    {
+            ////        for (int j = 0; j < Kol_H; j++) //инициализируем массив для выяснения разположения каждой части по столбцу
+            ////        {
+            ////            if (Pvo[i, j].Image != Puzz[i, j].Image)   //если хотя бы одна часть не совпадает, то проверочная переменная имеет значение false
+            ////                prov = false;
+            ////            else { prov = true; }
+            ////        }
+            ////    }
+            ////    if (prov == true)
+            ////    {
+            ////        pictureBox1.Controls.Clear();   //очистить pictureBox от добавленных в него pictureBox"ов с элементами пазла
+            ////        pictureBox1.Image = AnIm;     //Вывод изображения в pictureBox
+            ////        MessageBox.Show("            YOU WIN!!!            ");
+            ////    }
+            ////}
+        }
